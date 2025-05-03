@@ -1,0 +1,44 @@
+<div class="container-fluid p-0">
+    <div class="card">
+        <div class="card-header">
+            Car Details
+        </div>
+        <div class="card-body form-container">
+            <div class="row gy-4">
+                <div class="col-sm-4" *ngFor="let carsdetails of carsdata; let i=index">
+                    <div class="card p-0">
+                        <div class="card-header p-0">
+                            <img src="{{carsdetails.imageUrl}} " alt="{{this.carsdetails.name}} " class="img-fluid">
+                        </div>
+                        <div class="card-body">
+                            <div class="row gy-4">
+                                <div class="col-sm-6">
+                                    <div class="d-flex flex-column gap-0">
+                                        <div class="form-label">Car's Brand</div>
+                                        <div class="form-data">{{this.carsdetails.brand}}</div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex flex-column gap-0">
+                                        <div class="form-label">Car Name</div>
+                                        <div class="form-data">{{this.carsdetails.name}} </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <div class="d-flex flex-column gap-0">
+                                        <div class="form-label">Price Description</div>
+                                        <div class="form-data">{{this.carsdetails.pricingDescription}} </div>
+                                    </div>
+                                </div>
+                                <div class="col-sm-6">
+                                    <button class="btn btn-info" (click)="getCarId(carsdetails.carId)">View
+                                        Details</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

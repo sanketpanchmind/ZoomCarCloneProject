@@ -1,0 +1,39 @@
+<div class="container-fluid ">
+
+    <div class="row align-items-start my-5">
+        <div class="col-sm-6">
+            <img [src]="this.cardetails.imageUrl " alt="" class="img-fluid">
+        </div>
+        <div class="col-sm">
+            <div class="row align-items-center gy-2">
+                <div class="col-sm-6 border-end">
+                    <h5>{{this.cardetails.brand}} </h5>
+                </div>
+                <div class="col-sm-6">
+                    <h5>{{this.cardetails.name}} </h5>
+                </div>
+                <div class="col-sm-6 border-end">
+                    <h5>Pricing</h5>
+                </div>
+                <div class="col-sm-6">
+                    <h5>{{this.cardetails.pricingDescription}}</h5>
+                </div>
+                <div class="col-sm-6 border-end">
+                    <h5>Registered on </h5>
+                </div>
+                <div class="col-sm-6">
+                    <h5>{{this.cardetails.registeredOn | date}} </h5>
+
+                </div>
+            </div>
+            <div class="card my-4">
+                <div class="card-header">Book Car</div>
+                <div class="card-body">
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>
