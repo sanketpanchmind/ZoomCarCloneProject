@@ -14,11 +14,53 @@
                     <button class="btn btn-primary" (click)="openModal()">Register
                     </button>
                 </li>
-                <ng-container *ngIf="isLoggedIn && currentUser.userRole == 'Admin' ">
-                    <li><a class="nav-link ">Bookings</a></li>
-                    <li><a class="nav-link ">Locations</a></li>
-                    <li><a class="nav-link ">Add Vehicle</a></li>
-                </ng-container>
+                <li>
+
+                    <ng-container *ngIf="isLoggedIn && currentUser.userRole == 'Admin' ">
+                        <ul id="accordionExample">
+                            <li>
+                                <a class="nav-link" data-bs-toggle="collapse" href="#bookings" role="button"
+                                    aria-expanded="false" aria-controls="bookings">Bookings</a>
+                                <div class="collapse" id="bookings" data-bs-parent="#accordionExample">
+                                    <div class="card card-body">
+                                        <ul>
+                                            <li><a routerLink="/all-booking" class="text-decoration-none">All Bookings</a></li>
+                                            <li><a href="" class="text-decoration-none">Booking by Car</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a class="nav-link" data-bs-toggle="collapse" href="#location" role="button"
+                                    aria-expanded="false" aria-controls="location">Locations</a>
+                                <div class="collapse" id="location" data-bs-parent="#accordionExample">
+                                    <div class="card card-body">
+                                        <ul>
+                                            <li><a href="" class="text-decoration-none">Get Locations</a></li>
+                                            <li><a href="" class="text-decoration-none">Add Locations</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+
+                            <li>
+                                <a class="nav-link" data-bs-toggle="collapse" href="#vehicle" role="button"
+                                    aria-expanded="false" aria-controls="vehicle">Vehicle</a>
+                                <div class="collapse" id="vehicle" data-bs-parent="#accordionExample">
+                                    <div class="card card-body">
+                                        <ul>
+                                            <li><a href="" class="text-decoration-none">Get Vehicles</a></li>
+                                            <li><a href="" class="text-decoration-none">Add Vehicles</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </li>
+                        </ul>
+
+                    </ng-container>
+                </li>
+
                 <li class="nav-item" *ngIf="isLoggedIn">
                     <div class="dropdown">
                         <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"

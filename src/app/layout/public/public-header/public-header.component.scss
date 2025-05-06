@@ -1,0 +1,34 @@
+
+ul li #bookings,
+ul li #location,
+ul li #vehicle{
+    position: absolute;
+    z-index: 999;
+    top: 56px !important;
+}
+
+#location ul ,
+#bookings ul ,
+#vehicle ul {
+    list-style-type: none !important;
+    padding: 0;
+}
+#vehicle ul li ,
+#bookings ul li ,
+#location ul li {
+    list-style-type: none !important;
+    padding-block: 4px !important;
+    padding-inline: 4px !important;
+}
+
+#accordionExample{
+    display: flex;
+    gap: 13px;
+    list-style-type: none;
+    padding: 0;
+}
+
+#accordionExample .card.card-body ul li a{
+    text-decoration: none !important;
+    color: #3f3f3f !important;
+} 

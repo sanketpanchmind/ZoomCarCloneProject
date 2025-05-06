@@ -20,6 +20,7 @@ import { HttpClientModule } from '@angular/common/http';
     PublicRoutingModule,
     ReactiveFormsModule,
     HttpClientModule
-  ]
+  ],
+  exports:[PublicHeaderComponent, PublicFooterComponent]
 })
 export class PublicModule { }
