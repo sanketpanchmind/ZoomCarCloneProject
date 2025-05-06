@@ -30,7 +30,7 @@ export class PublicHeaderComponent {
     if (parsedData) {
       this.currentUser = parsedData;
       this.isLoggedIn = true;
-      console.log("current user const ---", this.currentUser.emailId, typeof (this.currentUser));
+      console.log("current user const ---", this.currentUser.emailId, this.currentUser.userRole, typeof (this.currentUser));
     }
     else{
       this.logout();
