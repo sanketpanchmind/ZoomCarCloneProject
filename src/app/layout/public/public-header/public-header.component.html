@@ -13,10 +13,104 @@
                 <li class="nav-item">
                     <a class="nav-link" href="#">Link</a>
                 </li>
-                <li class="nav-item">
-                    <button class="btn btn-primary">Login / Register</button>
+                <li class="nav-item" *ngIf="!isLoggedIn">
+                    <button class="btn btn-primary" (click)="openModal()">Register
+                    </button>
                 </li>
+                <li class="nav-item" *ngIf="isLoggedIn">
+                    <div class="dropdown">
+                        <button class="btn btn-primary dropdown-toggle" type="button" data-bs-toggle="dropdown"
+                            aria-expanded="false">
+                           {{this.currentUser.emailId}}
+                        </button>
+                        <ul class="dropdown-menu">
+                            <li>
+                                <a class="dropdown-item" (click)="logout()"> Logout </a>
+                            </li>
+                        </ul>
+                    </div>
+                </li>
+
             </ul>
         </div>
     </div>
 </nav>
+
+
+
+<!-- login / register modal -->
+<form [formGroup]="registerform">
+    <div class="modal" #loginmodal id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+        aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">{{register ? 'Registration Form' : ' Login Form
+                        '}} </h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+                        (click)="closeModal()"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row" *ngIf="register">
+                        <div class="col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label">Name</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                formControlName="name">
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label">Email address</label>
+                            <input type="email" class="form-control" id="exampleInputEmail1"
+                                aria-describedby="emailHelp" formControlName="email">
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label">Mobile Number</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                formControlName="mobileno">
+                        </div>
+                        <div class="col-sm-12">
+                            <label for="exampleInputEmail1" class="form-label">Password</label>
+                            <input type="text" class="form-control" id="exampleInputEmail1" aria-describedby="emailHelp"
+                                formControlName="password">
+                        </div>
+                    </div>
+
+                    <div class="row" *ngIf="!register">
+                        <form [formGroup]="loginform" (ngSubmit)="login()">
+                            <div class="col-sm-12">
+                                <label for="exampleInputEmail1" class="form-label">Name</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" formControlName="name">
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="exampleInputEmail1" class="form-label">Mobile Number</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" formControlName="mobileno">
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="exampleInputEmail1" class="form-label">Email address</label>
+                                <input type="email" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" formControlName="email">
+                            </div>
+                            <div class="col-sm-12">
+                                <label for="exampleInputEmail1" class="form-label">Password</label>
+                                <input type="text" class="form-control" id="exampleInputEmail1"
+                                    aria-describedby="emailHelp" formControlName="password">
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <div *ngIf="register">
+                        <a (click)="register = !register">Login</a>
+                    </div>
+                    <div *ngIf="!register">
+                        <a (click)="register = !register">Register</a>
+                    </div>
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary" (click)=" register ? submit() : login() ">{{register ?
+                        'Register ' : 'Login'}} </button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>
