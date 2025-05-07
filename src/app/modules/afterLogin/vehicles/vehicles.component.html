@@ -1,0 +1,24 @@
+<div class="container-fluid">
+    <div class="card h-100 p-0">
+        <div class="card-header">Vehicles</div>
+        <div class="card-body form-container ">
+            <div class="row">
+                <div class="col-sm-3" *ngFor="let cars of allCars; let i=index">
+                    <div class="card card-body position-relative p-0">
+                        <img [src]="cars.imageUrl" alt="{{cars.brand}} " class="img-fluid" (error)="hideimage($event)">
+                        <div class="car-details-top">
+                            <div class="form-data">{{cars.brand}}</div>
+                            <button class="btn bg-danger-subtle text-danger" (click)="deleteCardbyId(cars.carId)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                        </div>
+                        <div class="car-details-bottom">
+                            <div class="d-flex align-items-center justify-content-between">
+                                <div class="form-data">{{cars.name}}</div>
+                                <div class="form-data">{{cars.pricingDescription}}</div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
