@@ -23,4 +23,8 @@ export class GetAllLocationService {
   getCarDetailsbyId(carId: number): Observable<any> {
     return this.http.get('https://freeapi.miniprojectideas.com/api/ZoomCar/GetCarById?id=' + carId);
   }
+
+  addlocation(params: any): Observable<any> {
+    return this.http.post('https://freeapi.miniprojectideas.com/api/ZoomCar/AddBulkLocations', params);
+  }
 }

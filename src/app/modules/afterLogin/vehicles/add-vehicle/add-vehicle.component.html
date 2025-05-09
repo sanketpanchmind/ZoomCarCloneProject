@@ -1,0 +1,81 @@
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">
+            <h5>Add Vehicle</h5>
+        </div>
+        <div class="card-body">
+            <form [formGroup]="vehicleForm" (ngSubmit)="onSubmit()">
+                <div class="row gy-4">
+                    <div class="col-sm-3">
+
+                        <input class="form-control" formControlName="brand" placeholder="Brand" />
+                    </div>
+                    <div class="col-sm-3">
+
+                        <input class="form-control" formControlName="name" placeholder="Name" />
+                    </div>
+                    <div class="col-sm-3">
+
+                        <input class="form-control" formControlName="pricingDescription" placeholder="Pricing Desc" />
+                    </div>
+                    <div class="col-sm-3">
+
+                        <input class="form-control" formControlName="pricing" type="number" placeholder="Pricing" />
+                    </div>
+                    <div class="col-sm-3">
+                        <select class="form-control" formControlName="locationId">
+                            <option selected>Select Location</option>
+                            <option [value]="location.locationId" *ngFor="let location of locationArr; let i=index">
+                                {{location.city}} </option>
+                        </select>
+                    </div>
+                    <div class="col-sm-3">
+
+                        <input class="form-control" formControlName="imageUrl" placeholder="Image URL" />
+                    </div>
+                    <div class="col-sm-3">
+
+                        <input class="form-control" formControlName="vehicleNo" placeholder="Vehicle No" />
+                    </div>
+                    <div class="col-sm-3">
+                        <div formArrayName="zoomCarAccessoriess">
+                            <div *ngFor="let accessory of zoomCarAccessoriess.controls; let i = index"
+                                [formGroupName]="i">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <input class="form-control" formControlName="accessoriesTitle"
+                                            placeholder="Accessory Title" />
+                                    </div>
+                                    <div class="col-sm-12">
+                                        <label for="">Show on Website</label>
+                                        <div class="d-flex align-items-center gap-3">
+
+                                            <div class="form-check ">
+                                                <input class="form-check-input" type="radio" name="showOnWebsite"
+                                                    id="radioDefault1">
+                                                <label class="form-check-label" for="radioDefault1">
+                                                    Yes
+                                                </label>
+                                            </div>
+                                            <div class="form-check">
+                                                <input class="form-check-input" type="radio" name="showOnWebsite"
+                                                    id="radioDefault2">
+                                                <label class="form-check-label" for="radioDefault2">
+                                                    No
+                                                </label>
+                                            </div>
+                                        </div>
+                                        <!-- <input class="form-control" type="checkbox" formControlName="showOnWebsite" /> -->
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
+    </div>
+</div>

@@ -9,15 +9,19 @@ export class VehicleService {
 
   constructor(private http: HttpClient) { }
 
-  ngOnInit(){
+  ngOnInit() {
 
   }
 
-  getAllVehicles(): Observable<any>{
+  getAllVehicles(): Observable<any> {
     return this.http.get('https://freeapi.miniprojectideas.com/api/ZoomCar/GetAllCars');
   }
 
-  deleteCarById(id: number): Observable<any>{
-    return this.http.delete('https://freeapi.miniprojectideas.com/api/ZoomCar/DeleteCarById?id='+ id);
+  deleteCarById(id: number): Observable<any> {
+    return this.http.delete('https://freeapi.miniprojectideas.com/api/ZoomCar/DeleteCarById?id=' + id);
+  }
+
+  addvehicle(params: any): Observable<any> {
+    return this.http.post('https://freeapi.miniprojectideas.com/api/ZoomCar/addNewCar', params);
   }
 }
