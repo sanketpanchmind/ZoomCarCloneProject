@@ -3,7 +3,7 @@
         <div class="card-header">
             Car Details
         </div>
-        <div class="card-body form-container">
+        <div class="card-body form-container" *ngIf="this.carsdata.length > 0">
             <div class="row gy-4">
                 <div class="col-sm-4" *ngFor="let carsdetails of carsdata; let i=index">
                     <div class="card p-0">
@@ -39,6 +39,9 @@
                     </div>
                 </div>
             </div>
+        </div>
+        <div class="card-body form-container" *ngIf="this.carsdata.length <= 0">
+            <h1>No Car Registered for this location.</h1>
         </div>
     </div>
 </div>

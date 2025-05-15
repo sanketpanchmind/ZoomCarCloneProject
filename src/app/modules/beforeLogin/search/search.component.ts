@@ -38,6 +38,9 @@ export class SearchComponent {
     this.getalllocation.getCarsbyLocationId(this.currentLocationId).subscribe({
       next: (res: any) => {
         console.log("from search location id", this.currentLocationId);
+        if(res.data.length == 0){
+          console.log("no data");
+        }
         console.log(res.data);
         this.carsdata = res.data;
       },
