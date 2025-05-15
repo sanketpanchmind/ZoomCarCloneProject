@@ -40,7 +40,7 @@
                         <select #locationRef class="form-select" aria-label="Default select example" name="location">
                             <option selected>Select the Location</option>
                             <option *ngFor="let location of getAlllocationsArray; let i=index"
-                                [value]="location.locationId">{{location.title}} </option>
+                                [value]="location.locationId">{{location.title}}, {{location.city}} </option>
                         </select>
                     </div>
                     <div class="col-sm-3">

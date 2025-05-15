@@ -39,6 +39,9 @@ export class LocationRegisterComponent {
     this.getlocationservice.addlocation(params).subscribe({
       next: (res: any) => {
         console.log("location inserted");
+        if(res.result == true){
+          this.locationform.reset();
+        }
       },
       error: (error: any) => {
         console.error(error);
