@@ -1,1 +1,40 @@
-<p>all-booking works!</p>
+<div class="container-fluid">
+    <div class="card">
+        <div class="card-header">Get All Bookings</div>
+        <div class="card-body">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th scope="col">Sr. No.</th>
+                        <th scope="col">Car Brand</th>
+                        <th scope="col">Customer Name</th>
+                        <th scope="col">Customer Mobile Number</th>
+                        <th scope="col">Location</th>
+                        <th scope="col">Price</th>
+                        <th scope="col">Travel Date</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr *ngFor="let bkdetails of allbokingslist; let i=index">
+                        <td>{{i+1}} </td>
+                        <td>
+                            <!-- <a routerLink="{{bkdetails.imageUrl}}"> -->
+                            <img src="{{bkdetails.imageUrl}}" alt="" width="60" class="rounded img-fluid">
+                            <!-- </a> -->
+                        </td>
+                        <td>{{bkdetails.carBrand}} </td>
+                        <td>{{bkdetails.customerName}} </td>
+                        <td>{{bkdetails.customermobileNo}} </td>
+                        <td>{{bkdetails.locationTitle}} </td>
+                        <td>{{bkdetails.pricingDescription}} </td>
+                        <td>{{bkdetails.travelDate}} </td>
+                        <td>
+                            <button class="text-danger bg-danger-subtle border-0 rounded-2"
+                                (click)="getbookingId(bkdetails.bookingId)">Delete</button>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>

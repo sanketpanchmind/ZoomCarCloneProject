@@ -1,0 +1,42 @@
+{
+    "_employeeId":"employeeId",
+    "firstname":"Sanket",
+    "lastname":"Panchmind",
+    "Email":"sp@gmail.com",
+    "phoneno":8669264767,
+    "address":[
+        {
+            "houseno":602,
+            "streetcity":"MG Road, Pune",
+            "state":"Maharashtra",
+            "pincode":411056
+        }
+    ],
+    "salary":279100,
+    "designation":"Software Developer",
+    "experience":3,
+    "dateofjoining":"24-01-1997",
+    "birthdate":"15-03-1997"
+}
+
+{
+    "transactionID":"1",
+    "transactiondate":"10-02-2025", 
+    "name":"Arjun Das",
+    "tdetails":[
+        {
+            "itemId":"12",
+            "itemname":"Smart Watch",
+            "quantity":"1",
+            "price":"5000"
+        }
+    ],
+    "payment":[
+        {
+            "typeofpayment":"Credit",
+            "totalamountpaid":"5000",
+            "paymentsuccessfull":true
+        }
+    ],
+    "remark":"Good product. Recommended."
+}

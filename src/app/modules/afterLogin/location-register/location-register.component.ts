@@ -10,12 +10,14 @@ import { GetAllLocationService } from 'src/app/core/services/get-all-location.se
 export class LocationRegisterComponent {
 
   locationform!: FormGroup;
+  alllocationlist: any[] = [];
 
   constructor(private fb: FormBuilder, private getlocationservice: GetAllLocationService) {
 
   }
   ngOnInit() {
     this.defaultform();
+    this.getallLocation();
   }
 
   defaultform() {
@@ -24,6 +26,20 @@ export class LocationRegisterComponent {
       title: [''],
       pincode: ['']
     });
+  }
+
+  getallLocation() {
+    this.getlocationservice.getAllLocation().subscribe({
+      next: (res: any) => {
+        console.log(res.data);
+        if (res.result == true) {
+          this.alllocationlist = res.data;
+        }
+      },
+      error: (error: any) => {
+        console.error(error);
+      }
+    })
   }
 
   onSubmit() {
@@ -39,7 +55,7 @@ export class LocationRegisterComponent {
     this.getlocationservice.addlocation(params).subscribe({
       next: (res: any) => {
         console.log("location inserted");
-        if(res.result == true){
+        if (res.result == true) {
           this.locationform.reset();
         }
       },

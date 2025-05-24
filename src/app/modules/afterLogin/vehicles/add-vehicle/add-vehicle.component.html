@@ -41,12 +41,12 @@
                         <div formArrayName="zoomCarAccessoriess">
                             <div *ngFor="let accessory of zoomCarAccessoriess.controls; let i = index"
                                 [formGroupName]="i">
-                                <div class="row">
+                                <div class="row gy-3">
                                     <div class="col-sm-12">
                                         <input class="form-control" formControlName="accessoriesTitle"
                                             placeholder="Accessory Title" />
                                     </div>
-                                    <div class="col-sm-12">
+                                    <div class="d-flex align-items-center gap-4">
                                         <label for="">Show on Website</label>
                                         <div class="d-flex align-items-center gap-3">
 
@@ -74,7 +74,9 @@
                     </div>
 
                 </div>
-                <button type="submit" class="btn btn-primary">Submit</button>
+                <div class="text-end my-4">
+                    <button type="submit" class="btn btn-primary">Submit</button>
+                </div>
             </form>
         </div>
     </div>

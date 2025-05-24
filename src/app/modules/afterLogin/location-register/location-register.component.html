@@ -1,23 +1,67 @@
 <div class="container-fluid">
     <div class="card">
-        <div class="card-header">Location Register</div>
+        <div class="card-header">
+            <div class="d-flex align-items-center justify-content-between w-100">
+                Location Register
+                <button class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#vehiclemodal">Add
+                    Location</button>
+            </div>
+        </div>
         <div class="card-body">
-            <form [formGroup]="locationform" (ngSubmit)="onSubmit()">
-                <div class="row">
-                    <div class="col-sm-3">
-                        <input class="form-control" type="text" formControlName="city" placeholder="city">
-                    </div>
-                    <div class="col-sm-3">
-                        <input class="form-control" type="text" formControlName="title" placeholder="title">
-                    </div>
-                    <div class="col-sm-3">
-                        <input class="form-control" type="text" formControlName="pincode" placeholder="pincode">
-                    </div>
-                    <div class="col-sm-3">
-                        <button class="form-control" type="submit" class="btn btn-primary">Submit</button>
-                    </div>
-                </div>
-            </form>
+            <div class="location-list">
+                <table class="table table-bordered table-striped">
+                    <thead>
+                        <tr>
+                            <th scope="col">Sr. No.</th>
+                            <th scope="col">Location</th>
+                            <th scope="col">City</th>
+                            <th scope="col">Pincode</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr *ngFor="let location of alllocationlist; let i=index">
+                            <td>{{i+1}}</td>
+                            <td>{{location.title}} </td>
+                            <td>{{location.city}} </td>
+                            <td>{{location.pincode}} </td>
+                        </tr>
+                    </tbody>
+                </table>
+            </div>
         </div>
     </div>
 </div>
+
+
+<!-- Modal -->
+<form [formGroup]="locationform" (ngSubmit)="onSubmit()">
+    <div class="modal fade" id="vehiclemodal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Add New Location</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div class="row gy-4">
+                        <div class="col-sm-12">
+                            <input class="form-control" type="text" formControlName="city" placeholder="city">
+                        </div>
+                        <div class="col-sm-12">
+                            <input class="form-control" type="text" formControlName="title" placeholder="title">
+                        </div>
+                        <div class="col-sm-12">
+                            <input class="form-control" type="text" formControlName="pincode" placeholder="pincode">
+                        </div>
+                        <div class="col-sm-3">
+                        </div>
+                    </div>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                    <button class="form-control" type="submit" class="btn btn-primary">Submit</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

@@ -38,9 +38,8 @@
                                 <div class="collapse" id="location" data-bs-parent="#accordionExample">
                                     <div class="card card-body">
                                         <ul>
-                                            <li><a href="" class="text-decoration-none">Get Locations</a></li>
-                                            <li><a href="" class="text-decoration-none"
-                                                    routerLink="/locationRegister">Add Locations</a></li>
+                                            <li><a routerLink="/locationRegister" class="text-decoration-none">Locations
+                                                    Register</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -54,7 +53,8 @@
                                         <ul>
                                             <li><a routerLink="/vehicles" class="text-decoration-none">Get Vehicles</a>
                                             </li>
-                                            <li><a href="" class="text-decoration-none">Add Vehicles</a></li>
+                                            <li><a href="" class="text-decoration-none"
+                                                    routerLink="vehicles/add-vehicle">Add Vehicles</a></li>
                                         </ul>
                                     </div>
                                 </div>
@@ -83,7 +83,15 @@
     </div>
 </nav>
 
-
+<!-- {
+    "userId": 457,
+    "name": "AdminOne",
+    "userRole": "Admin",
+    "emailId": "admin1@gmail.com",
+    "mobileNo": "8669264767",
+    "password": "Admin@1234",
+    "createdOn": "2025-05-06T12:43:43.39"
+  }, -->
 
 <!-- login / register modal -->
 <form [formGroup]="registerform">
