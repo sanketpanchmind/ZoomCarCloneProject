@@ -11,6 +11,7 @@ export class SearchComponent {
 
   currentLocationId: number = 0;
   carsdata: any;
+  cardata: any = null;
 
   constructor(private activatedRoute: ActivatedRoute, private router: Router, private getalllocation: GetAllLocationService) {
 
@@ -20,7 +21,6 @@ export class SearchComponent {
         this.currentLocationId = res.locationid;
         console.log("search fn constructor --", this.currentLocationId);
         this.getCarsbyLocation();
-
       },
       error: (error: any) => {
         console.log(error);
@@ -51,8 +51,18 @@ export class SearchComponent {
   }
 
   getCarId(cardid: number) {
-    console.log("search file car id", cardid);
-    this.router.navigate(['/cardDetails', cardid]);
+    // console.log("search file car id", cardid);
+    // this.router.navigate(['/cardDetails', cardid]);
+
+    this.getalllocation.getCarDetailsbyId(cardid).subscribe({
+      next: (res: any) =>{
+        console.log("from search car details", res.data);
+        this.cardata = res.data;
+      },
+      error: (error: any) =>{
+        console.log(error);
+      }
+    })
   }
 
 }

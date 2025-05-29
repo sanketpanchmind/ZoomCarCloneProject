@@ -3,12 +3,12 @@
         <div class="card-header">
             Car Details
         </div>
-        <div class="card-body form-container" *ngIf="this.carsdata.length > 0">
+        <div class="card-body form-container">
             <div class="row gy-4">
                 <div class="col-sm-4" *ngFor="let carsdetails of carsdata; let i=index">
                     <div class="card p-0">
                         <div class="card-header p-0">
-                            <img src="{{carsdetails.imageUrl}} " alt="{{this.carsdetails.name}} " class="img-fluid">
+                            <img [src]="carsdetails.imageUrl" class="img-fluid">
                         </div>
                         <div class="card-body">
                             <div class="row gy-4">
@@ -24,15 +24,16 @@
                                         <div class="form-data">{{this.carsdetails.name}} </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
+                                <div class="col-sm">
                                     <div class="d-flex flex-column gap-0">
                                         <div class="form-label">Price Description</div>
                                         <div class="form-data">{{this.carsdetails.pricingDescription}} </div>
                                     </div>
                                 </div>
-                                <div class="col-sm-6">
-                                    <button class="btn btn-info" (click)="getCarId(carsdetails.carId)">View
-                                        Details</button>
+                                <div class="col-sm-auto">
+                                    <button type="button" class="btn btn-primary form-label" data-bs-toggle="modal"
+                                        (click)="getCarId(carsdetails.carId)" data-bs-target="#cardetails">
+                                        <i class="fa fa-eye" aria-hidden="true"></i></button>
                                 </div>
                             </div>
                         </div>
@@ -40,8 +41,67 @@
                 </div>
             </div>
         </div>
-        <div class="card-body form-container" *ngIf="this.carsdata.length <= 0">
+        <!-- <div class="card-body form-container" *ngIf="this.carsdata.length <= 0">
             <h1>No Car Registered for this location.</h1>
+        </div> -->
+    </div>
+</div>
+
+
+
+<!-- Modal -->
+<div class="modal fade form-container" id="cardetails" tabindex="-1" aria-labelledby="cardetails" aria-hidden="true">
+    <div class="modal-dialog modal-lg">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Car Details</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body" *ngIf="cardata">
+                <div class="row">
+                    <div class="col-sm-4">
+                        <img [src]="cardata.imageUrl" alt="Car Image" class="img-fluid mb-3" />
+                    </div>
+                    <div class="col-sm">
+                        <div class="row gy-4">
+                            <div class="col-sm-6">
+                                <div class="d-flex gap-2">
+                                    <div class="form-label">Brand</div>
+                                    <div class="form-data">- {{cardata.brand}}</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex gap-2">
+                                    <div class="form-label">Name</div>
+                                    <div class="form-data">- {{cardata.name}}</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex gap-2">
+                                    <div class="form-label">Vehicle Number</div>
+                                    <div class="form-data">- {{cardata.vehicleNo}}</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex gap-2"
+                                    *ngFor="let acctype of cardata.zoomCarAccessoriess; let i=index">
+                                    <div class="form-label">Type</div>
+                                    <div class="form-data">- {{acctype.accessoriesTitle }}</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-6">
+                                <div class="d-flex gap-2">
+                                    <div class="form-label">Pricing Description</div>
+                                    <div class="form-data">- {{cardata.pricingDescription}}</div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+            </div>
         </div>
     </div>
 </div>
