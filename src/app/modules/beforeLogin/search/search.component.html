@@ -95,6 +95,10 @@
                                     <div class="form-data">- {{cardata.pricingDescription}}</div>
                                 </div>
                             </div>
+                            <div class="col-sm-6">
+                                <a class="text-primary" data-bs-toggle="modal" data-bs-target="#bookthiscar"
+                                    (click)="checkloggedIn()">Book this Car ?</a>
+                            </div>
                         </div>
                     </div>
                 </div>
@@ -105,3 +109,84 @@
         </div>
     </div>
 </div>
+
+<form [formGroup]="carbookingform" >
+    <!-- Modal -->
+    <div class="modal fade" id="bookthiscar" tabindex="-1" aria-labelledby="bookthiscarLabel" aria-hidden="true"
+        *ngIf="this.isloggedin" #bookthiscardialog>
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h1 class="modal-title fs-5" id="exampleModalLabel">Booking this Car</h1>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <div *ngIf="cardata">
+                        <div class="row gy-4">
+                            <div class="col-sm-4">
+                                <img [src]="cardata.imageUrl" alt="Car Image" class="img-fluid mb-3" />
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="d-flex gap-2">
+                                    <div class="form-label">Brand</div>
+                                    <div class="form-data">- {{cardata.brand}}</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="d-flex gap-2">
+                                    <div class="form-label">Name</div>
+                                    <div class="form-data">- {{cardata.name}}</div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <div class="d-flex flex-column gap-2">
+                                    <div class="form-label">Customer Name</div>
+                                    <div class="form-data">- {{this.parsedUserId}} </div>
+                                </div>
+                            </div>
+                            <div class="col-sm-4">
+                                <select #locationRef class="form-select" aria-label="Default select example"
+                                    formControlName="fromLocationId">
+                                    <option selected>From Location</option>
+                                    <option *ngFor="let location of getAlllocationsArray; let i=index"
+                                        [value]="location.locationId">{{location.title}}, {{location.city}} </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <select #locationRef class="form-select" aria-label="Default select example"
+                                    formControlName="toLocationId">
+                                    <option selected>To Location</option>
+                                    <option *ngFor="let location of getAlllocationsArray; let i=index"
+                                        [value]="location.locationId">{{location.title}}, {{location.city}} </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="date" class="form-control" formControlName="travelDate" placeholder="Travel Date">
+                            </div>
+                            <div class="col-sm-4">
+                                <!-- <input type="text" class="form-control" formControlName="pickupAddress"> -->
+                                  <select #locationRef class="form-select disabled" aria-label="Default select example"
+                                    formControlName="pickupAddress">
+                                    <option selected>From Location</option>
+                                    <option *ngFor="let location of getAlllocationsArray; let i=index"
+                                        [value]="location.city">{{location.title}}, {{location.city}} </option>
+                                </select>
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text" class="form-control" formControlName="alternateContactNo" placeholder="Alternate Contact No">
+                            </div>
+                            <div class="col-sm-4">
+                                <input type="text " formControlName="invoiceNo" class="form-control"
+                                    placeholder="Invoice No">
+                            </div>
+                        </div>
+                    </div>                     
+                </div>               
+                <div class="modal-footer">
+                    <button class="btn btn-secondary">Clear</button>
+                    <button type="submit" class="btn btn-primary" (click)="bookCar()">Save changes</button>
+                </div>
+            </div>
+        </div>
+    </div>
+</form>

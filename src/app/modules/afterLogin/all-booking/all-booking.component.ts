@@ -9,6 +9,11 @@ import { BookingService } from 'src/app/core/services/booking.service';
 export class AllBookingComponent {
 
   allbokingslist: any[] = [];
+  pageSize = 10;
+  currentPage = 1;
+  allbooked = [];
+  bookedArray = []; // Data to display in current page
+
 
   constructor(private bookingservice: BookingService) {
 
@@ -17,6 +22,20 @@ export class AllBookingComponent {
     this.getallbookings();
   }
 
+  paginatebookings() {
+    const start = (this.currentPage - 1) * this.pageSize;
+    const end = start + this.pageSize;
+    this.bookedArray = this.allbooked.slice(start, end);
+  }
+
+  changePage(page: number) {
+  this.currentPage = page;
+  this.paginatebookings();
+}
+
+get totalPages(): number[] {
+  return Array(Math.ceil(this.allbooked.length / this.pageSize)).fill(0).map((_, i) => i + 1);
+}
   getallbookings() {
     this.bookingservice.getallbookings().subscribe({
       next: (res: any) => {

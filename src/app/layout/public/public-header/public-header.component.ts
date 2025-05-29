@@ -71,6 +71,16 @@ export class PublicHeaderComponent {
       password: new FormControl(''),
     })
   }
+
+  // {
+  //     "userId": 292,
+  //     "name": "Sanket",
+  //     "userRole": "Customer",
+  //     "emailId": "sanket@gmail.com",
+  //     "mobileNo": "7895689875",
+  //     "password": "123",
+  //     "createdOn": "2024-01-23T11:29:27.607"
+  //   },
   submit() {
     console.log("submit ()")
     console.log("register values --", this.registerform.value);
@@ -91,9 +101,11 @@ export class PublicHeaderComponent {
       next: (res: any) => {
         console.log("response --", res);
         if (res.result == true) { this.closeModal(); }
+        else { alert(res.message); }
       },
       error: (error: any) => {
         console.log("error --", error);
+        alert("Something went wrong, please try again later.");
       }
     })
   }

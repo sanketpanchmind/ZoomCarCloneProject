@@ -2,16 +2,18 @@
     <div class="card">
         <div class="card-header">Get All Bookings</div>
         <div class="card-body">
-            <table class="table">
+            <table class="table table-stripped">
                 <thead>
                     <tr>
                         <th scope="col">Sr. No.</th>
+                        <th>Car Image</th>
                         <th scope="col">Car Brand</th>
-                        <th scope="col">Customer Name</th>
+                        <th scope="col">Car Name</th>
                         <th scope="col">Customer Mobile Number</th>
                         <th scope="col">Location</th>
                         <th scope="col">Price</th>
                         <th scope="col">Travel Date</th>
+                        <th>Action</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -27,14 +29,24 @@
                         <td>{{bkdetails.customermobileNo}} </td>
                         <td>{{bkdetails.locationTitle}} </td>
                         <td>{{bkdetails.pricingDescription}} </td>
-                        <td>{{bkdetails.travelDate}} </td>
+                        <td>{{bkdetails.travelDate | date}} </td>
                         <td>
                             <button class="text-danger bg-danger-subtle border-0 rounded-2"
-                                (click)="getbookingId(bkdetails.bookingId)"><i class="fa fa-trash" aria-hidden="true"></i></button>
+                                (click)="getbookingId(bkdetails.bookingId)"><i class="fa fa-trash"
+                                    aria-hidden="true"></i>
+                            </button>
                         </td>
                     </tr>
                 </tbody>
             </table>
+            <nav>
+                <ul class="pagination">
+                    <li class="page-item" *ngFor="let page of totalPages">
+                        <a class="page-link" (click)="changePage(page)" [class.active]="page === currentPage">{{ page
+                            }}</a>
+                    </li>
+                </ul>
+            </nav>
         </div>
     </div>
 </div>
