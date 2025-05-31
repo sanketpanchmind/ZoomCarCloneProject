@@ -35,19 +35,13 @@
         <div class="card search-cars">
             <div class="card-body">
                 <div class="row gx-2 align-items-center">
-                    <div class="col-sm-4">
+                    <div class="col-sm">
                         <!-- #locationRef is template reference variable -->
                         <select #locationRef class="form-select" aria-label="Default select example" name="location">
                             <option selected>Select the Location</option>
                             <option *ngFor="let location of getAlllocationsArray; let i=index"
                                 [value]="location.locationId">{{location.title}}, {{location.city}} </option>
                         </select>
-                    </div>
-                    <div class="col-sm-3">
-                        <input type="date" class="form-control">
-                    </div>
-                    <div class="col-sm-3">
-                        <input type="date" class="form-control">
                     </div>
                     <div class="col-sm-auto">
                         <a class="btn btn-primary" (click)="getSearchData(locationRef.value) ">Search</a>
